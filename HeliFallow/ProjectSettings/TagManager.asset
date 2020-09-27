@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Path
   - Thief
+  - UpPath
+  - DownPath
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Spot
+  - Thief
   - 
   - 
   - 

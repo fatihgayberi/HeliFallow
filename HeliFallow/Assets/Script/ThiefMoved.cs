@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThiefMoved : MonoBehaviour
 {
-    [SerializeField] float speed = 3f;
+    [SerializeField] float speed = 1f;
     Rigidbody rbThief;
 
     // Start is called before the first frame update
@@ -16,8 +16,8 @@ public class ThiefMoved : MonoBehaviour
     // thiefin hareket etmesini saglar
     void ThiefMove()
     {
-        rbThief.velocity = new Vector3(speed, rbThief.velocity.y, rbThief.velocity.z);
-    }
+        rbThief.velocity = new Vector3(speed, 0, speed);
+    }//itewen
 
     private void FixedUpdate()
     {

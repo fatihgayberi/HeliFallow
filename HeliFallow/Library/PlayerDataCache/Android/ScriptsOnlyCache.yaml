@@ -1,8 +1,10 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - LineChange
     - PathController
     - SpotController
+    - SpotTrigger
     - ThiefMoved
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -10,6 +12,15 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -41,18 +52,48 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12454}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 13484}
+      Script: {instanceID: 11982}
     - Class: 114
-      Script: {instanceID: 15256}
+      Script: {instanceID: 11998}
+    - Class: 114
+      Script: {instanceID: 12024}
+    - Class: 114
+      Script: {instanceID: 12456}
+    - Class: 114
+      Script: {instanceID: 12460}
+    - Class: 114
+      Script: {instanceID: 12630}
+    - Class: 114
+      Script: {instanceID: 12922}
+    - Class: 114
+      Script: {instanceID: 13456}
+    - Class: 114
+      Script: {instanceID: 13490}
+    - Class: 114
+      Script: {instanceID: 13840}
+    - Class: 114
+      Script: {instanceID: 13876}
+    - Class: 114
+      Script: {instanceID: 14322}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     - Class: 850595691
       Script: {instanceID: 0}
@@ -117,6 +158,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: b8087fffa87a57dd1262c2dad0a6dab2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpotController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -255,6 +302,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 4b114470a889b14fb716ed2785de728a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraFolow
+  - hash:
+      serializedVersion: 2
+      Hash: 3d0d544b72b9d52f4a33504e57a9df97
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpotTrigger
   - hash:
       serializedVersion: 2
       Hash: 040dd48e3a027d5424519a5fa2009df4
@@ -491,10 +550,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: b8087fffa87a57dd1262c2dad0a6dab2
+      Hash: 020b33145645caaab8aed33c2430afe6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SpotController
+    className: LineChange
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
