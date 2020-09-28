@@ -34,7 +34,7 @@ public class ThiefMoved : MonoBehaviour
         
     }//itewen
 
-    private void FixedUpdate()
+    private void Update()
     {
         ThiefMove();
     }
