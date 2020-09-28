@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class LineChange : MonoBehaviour
 {
-    GameObject otherObject;
-    bool changePosition;
     bool changeRotate;
+    bool changingLane;
     public float rotationAngle = 40f;
     Quaternion deltaRotation;
     Quaternion startRotation;
-    Vector3 deltaPosition;
-    Vector3 startPosition;
     public float rotateStartTime;
     public float rotateJourneyTime;
     public float rotateSpeed;
-    public float positionStartTime;
-    public float positionJourneyTime;
-    public float positionSpeed;
-    float posZ;
+    float targetPosZ;
+    float speedZ;
 
     // Start is called before the first frame update
     void Start()
@@ -34,58 +29,63 @@ public class LineChange : MonoBehaviour
     private void FixedUpdate()
     {
         Rotate();
-        PositionUpdate();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        otherObject = other.gameObject;
-        positionController();
+        positionController(other);
     }
 
     void Rotate()
     {
         if (changeRotate)
         {
-            float fracComplete = Mathf.PingPong(Time.time - rotateStartTime, rotateJourneyTime / rotateSpeed);
-            //otherObject.transform.rotation = Quaternion.Slerp(deltaRotation, startRotation, fracComplete * rotateSpeed);
-            if (otherObject.transform.rotation == startRotation)
+            transform.rotation = Quaternion.Slerp(deltaRotation, startRotation, Time.deltaTime * rotateSpeed);
+            if (transform.rotation.y == 0f)
             {
                 changeRotate = false;
             }
         }
     }
 
-    void PositionUpdate()
+    void positionController(Collider other)
     {
-        if (changePosition)
-        {
-            float fracComplete = Mathf.PingPong(Time.time - positionStartTime, positionJourneyTime / positionSpeed);
-            otherObject.transform.position = Vector3.Slerp(deltaPosition, startPosition, fracComplete * positionSpeed);
-            if (otherObject.transform.position.z == posZ)
-            {
-                changePosition = false;
-            }
-        }
-    }
+        startRotation = transform.rotation;
 
-    void positionController()
-    {
-        startRotation = otherObject.transform.rotation;
-
-        if (CompareTag("DownPath"))
-        {            
-            posZ = otherObject.transform.position.z - 5f;
-        }
-        if (CompareTag("UpPath"))
+        if (other.CompareTag("DownPath"))
         {
+            speedZ = -3f;
+            Mathf.Abs(rotationAngle);
+            targetPosZ = (int)transform.position.z - 5f;
+        }
+        if (other.CompareTag("UpPath"))
+        {
+            speedZ = 3f;
             rotationAngle *= -1;
-            posZ = otherObject.transform.position.z + 5f;
+            targetPosZ = (int)transform.position.z + 5f;
         }
         deltaRotation = Quaternion.Euler(0, rotationAngle, 0);
-        startPosition = otherObject.transform.position;
-        deltaPosition = new Vector3(otherObject.transform.position.x, otherObject.transform.position.y, posZ);
-        changePosition = true;
         changeRotate = true;
+        changingLane = true;
+    }
+
+    public bool GetChangingLane()
+    {
+        return changingLane;
+    }
+
+    public void SetChangingLane(bool changingLane)
+    {
+        this.changingLane = changingLane;
+    }
+
+    public float GetTargetPosZ()
+    {
+        return targetPosZ;
+    }
+
+    public float GetSpeedZ()
+    {
+        return speedZ;
     }
 }
