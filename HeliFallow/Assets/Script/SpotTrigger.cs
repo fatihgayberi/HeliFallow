@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class SpotTrigger : MonoBehaviour
 {
-    [SerializeField] Slider shotSlider;
-    [SerializeField] Button shotButton;
-    const float time = 5f;
-    float timeCounter;
-    bool timer;
+    [SerializeField] Slider shotSlider; // shot butonunu dolduran bar
+    [SerializeField] Button shotButton; // ates etme butonu
+    const float time = 5f; // barin dolma sursi
+    float timeCounter; // local zamani tutar
+    bool timer;  // zaman sayacini baslatir durdurur
 
 
     private void Start()
@@ -25,18 +25,21 @@ public class SpotTrigger : MonoBehaviour
     // thief ile spot kesistigi surece sayaci arttirir.
     private void OnTriggerStay(Collider other)
     {
-        timer = false;
-
-        if (timeCounter < time)
+        if (other.CompareTag("Thief"))
         {
-            timeCounter += Time.deltaTime;
-            Debug.Log("time+: " + timeCounter);
-            SetShotSlider(timeCounter);
-            if (timeCounter >= time)
+            timer = false;
+
+            if (timeCounter < time)
             {
-                shotSlider.gameObject.SetActive(false);
-                shotButton.gameObject.SetActive(true);
-                Debug.Log("win");
+                timeCounter += Time.deltaTime;
+                Debug.Log("time+: " + timeCounter);
+                SetShotSlider(timeCounter);
+                if (timeCounter >= time)
+                {
+                    shotSlider.gameObject.SetActive(false);
+                    shotButton.gameObject.SetActive(true);
+                    Debug.Log("win");
+                }
             }
         }
     }
@@ -44,7 +47,10 @@ public class SpotTrigger : MonoBehaviour
     // spot thief ile temasi bitirdiginde zamani azaltmak icin calisir
     private void OnTriggerExit(Collider other)
     {
-        timer = true;
+        if (other.CompareTag("Thief"))
+        {
+            timer = true;
+        }
     }
 
     // saniye sayacini azaltir

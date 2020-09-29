@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class LineChange : MonoBehaviour
 {
-    bool changeRotate;
-    bool changingLane;
-    bool upDirection;
-    public float rotationAngle = 0.5f;
-    Quaternion deltaRotation;
-    Quaternion startRotation;
-    public float rotateStartTime;
-    public float rotateJourneyTime;
-    public float rotateSpeed;
-    float targetPosZ;
-    float speedZ;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    bool changeRotate; // aracin donusunu baslatir ve sonlandirir
+    bool changingLane; // serit degisimini haber verir
+    bool upDirection; // aracin yukari mi asagi mi serit degisecegini tutar
+    public float rotationAngle = 0.5f; // Quaternion.Slerp e uygun bir aci tutar
+    Quaternion deltaRotation; // yapacagi virajin keskinligini saklar
+    Quaternion startRotation; // baslangic rotasyonlarını tutar
+    public float rotateStartTime; // donusun ne zaman baslayacagini saklar
+    public float rotateJourneyTime; // donusun ne kadar uzun surcegini saklar
+    public float rotateSpeed; // donus hizini tutar
+    float targetPosZ; // gidilecek olan yolun Z pozisyonunu saklar
+    float speedZ; // serit degistirme hizini saklar
 
     private void FixedUpdate()
     {
@@ -37,6 +26,7 @@ public class LineChange : MonoBehaviour
         positionController(other);
     }
 
+    // arcin seir degistirirkenki donme animasyonunu gercekler
     void Rotate()
     {
         if (changeRotate)
@@ -51,9 +41,10 @@ public class LineChange : MonoBehaviour
         }
     }
 
+    // aracin ne sekilde animasyon yapacagını belirler
     void positionController(Collider other)
     {
-
+        // asagi yonde hareket edecek ise
         if (other.CompareTag("DownPath"))
         {
             startRotation = transform.rotation;
@@ -65,6 +56,8 @@ public class LineChange : MonoBehaviour
             changingLane = true;
             upDirection = false;
         }
+
+        // yukari yonde hareket edecek ise
         if (other.CompareTag("UpPath"))
         {
             startRotation = transform.rotation;
@@ -76,7 +69,6 @@ public class LineChange : MonoBehaviour
             changingLane = true;
             upDirection = true;
         }
-
     }
 
     public bool GetChangingLane()

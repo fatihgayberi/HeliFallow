@@ -16,6 +16,11 @@ public class ThiefMoved : MonoBehaviour
         rbThief = GetComponent<Rigidbody>();
     }
 
+    private void FixedUpdate()
+    {
+        ThiefMove();
+    }
+
     // thiefin hareket etmesini saglar
     void ThiefMove()
     {
@@ -56,9 +61,4 @@ public class ThiefMoved : MonoBehaviour
         }
         
     }//itewen
-
-    private void FixedUpdate()
-    {
-        ThiefMove();
-    }
 }

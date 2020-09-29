@@ -1340,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thief
       objectReference: {fileID: 0}
+    - target: {fileID: 8392225405426327164, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: m_TagString
+      value: Thief
+      objectReference: {fileID: 0}
     - target: {fileID: 8698215988287300560, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: rotateSpeed
       value: 0.5

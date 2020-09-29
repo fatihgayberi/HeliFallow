@@ -37,17 +37,18 @@ public class SpotController : MonoBehaviour
             float v = speedModifier * Input.GetAxis("Mouse Y");
 
             this.transform.position = new Vector3(transform.position.x + v, transform.position.y, transform.position.z + h);
-            editor = false;
+            //editor = false;
         }
         else
         {
-            editor = true;
+            //editor = true;
         }
     }
 
+    // spot isiginin aracin arkasina dusmemesi icin hareket etmesini saglar.
     void SpotPositonUpdate()
     {
-        if (editor)
+        //if (editor)
         {
             rbSpot.velocity = new Vector3(3f, 0f, 0f);
         }

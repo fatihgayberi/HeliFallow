@@ -13,6 +13,7 @@ public class CameraFolow : MonoBehaviour
 
     private void Start()
     {
+        PerspectiveSettings();
     }
     private void LateUpdate()
     {
@@ -25,10 +26,9 @@ public class CameraFolow : MonoBehaviour
         Vector3 desiredPosition = new Vector3(space, distance, 0) + new Vector3 (target.position.x, target.position.y, 0);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
-
-        PerspectiveSettings();
     }
 
+    // kameranin perspektifini ayarlar 
     void PerspectiveSettings()
     {
         transform.rotation = Quaternion.Euler(perspective, 90, transform.rotation.z);
