@@ -8,17 +8,24 @@ using UnityEngine.UIElements;
 public class SpotController : MonoBehaviour
 {
     public float speedModifier;
+    bool editor;
+    Rigidbody rbSpot;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rbSpot = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {   
         TouchControl();
+    }
+
+    private void FixedUpdate()
+    {
+        SpotPositonUpdate();
     }
 
     // parmak konumuna gore spot isigi hareket eder.
@@ -30,6 +37,19 @@ public class SpotController : MonoBehaviour
             float v = speedModifier * Input.GetAxis("Mouse Y");
 
             this.transform.position = new Vector3(transform.position.x + v, transform.position.y, transform.position.z + h);
+            editor = false;
+        }
+        else
+        {
+            editor = true;
+        }
+    }
+
+    void SpotPositonUpdate()
+    {
+        if (editor)
+        {
+            rbSpot.velocity = new Vector3(3f, 0f, 0f);
         }
     }
 }

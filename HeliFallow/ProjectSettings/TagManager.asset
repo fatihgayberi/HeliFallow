@@ -8,6 +8,7 @@ TagManager:
   - Thief
   - UpPath
   - DownPath
+  - SpotLight
   layers:
   - Default
   - TransparentFX
