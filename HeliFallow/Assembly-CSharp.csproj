@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\SpotTrigger.cs" />
     <Compile Include="Assets\Script\LineChange.cs" />
     <Compile Include="Assets\Script\ThiefMoved.cs" />
+    <Compile Include="Assets\Script\PoliceFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

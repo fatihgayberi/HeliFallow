@@ -6,7 +6,7 @@ using UnityEngine;
 public class ThiefMoved : MonoBehaviour
 {
     LineChange lineChange;
-    [SerializeField] float speed = 1f;
+    [SerializeField] float speed;
     Rigidbody rbThief;
 
     // Start is called before the first frame update
