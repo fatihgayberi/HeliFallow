@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,23 +19,45 @@ public class ThiefMoved : MonoBehaviour
     // thiefin hareket etmesini saglar
     void ThiefMove()
     {
+        // duz bir hizada ilerlemesini saglar
         if (!lineChange.GetChangingLane())
         {
             rbThief.velocity = new Vector3(speed, 0, 0);
         }
+        // serit degistirirken capraz ilerlemesini saglar
         if (lineChange.GetChangingLane())
         {
             rbThief.velocity = new Vector3(speed, 0, lineChange.GetSpeedZ());
-            if ((int)transform.position.z == lineChange.GetTargetPosZ())
+
+            // en alt seride gecmesini kontrol eder
+            if (lineChange.GetTargetPosZ() == -5 && transform.position.z <= lineChange.GetTargetPosZ())
             {
+                transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
                 lineChange.SetChangingLane(false);
-                transform.position = new Vector3(transform.position.x, transform.position.y, lineChange.GetTargetPosZ());
+            }
+            // en ust seride gecmesini kontrol eder
+            if (lineChange.GetTargetPosZ() == 5 && transform.position.z >= lineChange.GetTargetPosZ())
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
+                lineChange.SetChangingLane(false);
+            }
+            // orta seritten en ust seride gecmesini kontrol eder
+            if (lineChange.GetTargetPosZ() == 0 && lineChange.GetUpDirection() && transform.position.z >= lineChange.GetTargetPosZ())
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
+                lineChange.SetChangingLane(false);
+            }
+            // orta seritten en alt seride gecmesini kontrol eder
+            else if (lineChange.GetTargetPosZ() == 0 && !lineChange.GetUpDirection() && transform.position.z <= lineChange.GetTargetPosZ())
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
+                lineChange.SetChangingLane(false);
             }
         }
         
     }//itewen
 
-    private void Update()
+    private void FixedUpdate()
     {
         ThiefMove();
     }

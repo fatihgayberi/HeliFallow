@@ -6,6 +6,7 @@ public class LineChange : MonoBehaviour
 {
     bool changeRotate;
     bool changingLane;
+    bool upDirection;
     public float rotationAngle = 0.5f;
     Quaternion deltaRotation;
     Quaternion startRotation;
@@ -24,11 +25,11 @@ public class LineChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotate();
     }
 
     private void FixedUpdate()
     {
+        Rotate();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,11 +41,12 @@ public class LineChange : MonoBehaviour
     {
         if (changeRotate)
         {
-            float fracComplete = Mathf.PingPong(Time.time - rotateStartTime, rotateJourneyTime / rotateSpeed);
+            float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
             transform.rotation = Quaternion.Slerp(deltaRotation, startRotation, fracComplete * rotateSpeed);
             if (transform.rotation == startRotation)
             {
                 changeRotate = false;
+                transform.rotation = Quaternion.Euler(0, 90f, 0);
             }
         }
     }
@@ -57,20 +59,22 @@ public class LineChange : MonoBehaviour
             startRotation = transform.rotation;
             speedZ = -3f;
             rotationAngle = 120;
-            targetPosZ = (int)transform.position.z - 5f;
+            targetPosZ = Mathf.Round(transform.position.z) - 5f;
             deltaRotation = Quaternion.Euler(0, rotationAngle, 0);
             changeRotate = true;
             changingLane = true;
+            upDirection = false;
         }
         if (other.CompareTag("UpPath"))
         {
             startRotation = transform.rotation;
             speedZ = 3f;
             rotationAngle = 60;
-            targetPosZ = (int)transform.position.z + 5f;
+            targetPosZ = Mathf.Round(transform.position.z) + 5f;
             deltaRotation = Quaternion.Euler(0, rotationAngle, 0);
             changeRotate = true;
             changingLane = true;
+            upDirection = true;
         }
 
     }
@@ -83,6 +87,11 @@ public class LineChange : MonoBehaviour
     public void SetChangingLane(bool changingLane)
     {
         this.changingLane = changingLane;
+    }
+
+    public bool GetUpDirection() 
+    {
+        return upDirection;
     }
 
     public float GetTargetPosZ()
