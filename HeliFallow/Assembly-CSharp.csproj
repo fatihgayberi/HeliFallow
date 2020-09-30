@@ -55,14 +55,15 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\PoliceFollow.cs" />
     <Compile Include="Assets\Script\SpotController.cs" />
     <Compile Include="Assets\Script\CameraFolow.cs" />
     <Compile Include="Assets\Script\SpotTrigger.cs" />
     <Compile Include="Assets\Script\LineChange.cs" />
     <Compile Include="Assets\Script\ThiefMoved.cs" />
-    <Compile Include="Assets\Script\PoliceFollow.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\CarPackage\JMO Assets\Toony Colors Pro\Shaders 2.0\Variants Base\TCP2_Mobile_Specular.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

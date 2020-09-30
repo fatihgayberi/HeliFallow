@@ -21,17 +21,17 @@ public class PoliceFollow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Vector3 newPath = other.gameObject.transform.position;
+        Vector3 newPath = transform.position;
 
         if (other.CompareTag("UpPath"))
         {
-            Instantiate(upPath, new Vector3(followDistance, newPath.y, newPath.z), Quaternion.identity);
+            Instantiate(upPath, new Vector3(newPath.x - followDistance, newPath.y, newPath.z), Quaternion.identity);
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("DownPath"))
         {
-            Instantiate(downPath, new Vector3(followDistance, newPath.y, newPath.z), Quaternion.identity);
+            Instantiate(downPath, new Vector3(newPath.x - followDistance, newPath.y, newPath.z), Quaternion.identity);
             Destroy(other.gameObject);
         }
     }

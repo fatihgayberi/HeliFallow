@@ -9,6 +9,7 @@ TagManager:
   - UpPath
   - DownPath
   - SpotLight
+  - PathEnd
   layers:
   - Default
   - TransparentFX

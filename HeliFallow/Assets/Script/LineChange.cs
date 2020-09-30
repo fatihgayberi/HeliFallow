@@ -69,6 +69,10 @@ public class LineChange : MonoBehaviour
             changingLane = true;
             upDirection = true;
         }
+        else if (other.CompareTag("PathEnd"))
+        {
+            other.GetComponent<ThiefMoved>().enabled = false;
+        }
     }
 
     public bool GetChangingLane()

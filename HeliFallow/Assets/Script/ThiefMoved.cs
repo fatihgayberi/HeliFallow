@@ -35,13 +35,13 @@ public class ThiefMoved : MonoBehaviour
             rbThief.velocity = new Vector3(speed, 0, lineChange.GetSpeedZ());
 
             // en alt seride gecmesini kontrol eder
-            if (lineChange.GetTargetPosZ() == -5 && transform.position.z <= lineChange.GetTargetPosZ())
+            if (lineChange.GetTargetPosZ() < 0 && transform.position.z <= lineChange.GetTargetPosZ())
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
                 lineChange.SetChangingLane(false);
             }
             // en ust seride gecmesini kontrol eder
-            if (lineChange.GetTargetPosZ() == 5 && transform.position.z >= lineChange.GetTargetPosZ())
+            if (lineChange.GetTargetPosZ() > 0 && transform.position.z >= lineChange.GetTargetPosZ())
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, (int)lineChange.GetTargetPosZ());
                 lineChange.SetChangingLane(false);
