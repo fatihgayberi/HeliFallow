@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\PoliceFollow.cs" />
     <Compile Include="Assets\Script\SpotController.cs" />
+    <Compile Include="Assets\Script\Shooter.cs" />
     <Compile Include="Assets\Script\CameraFolow.cs" />
     <Compile Include="Assets\Script\SpotTrigger.cs" />
     <Compile Include="Assets\Script\LineChange.cs" />

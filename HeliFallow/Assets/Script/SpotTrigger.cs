@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class SpotTrigger : MonoBehaviour
 {
-    [SerializeField] Slider shotSlider; // shot butonunu dolduran bar
-    [SerializeField] Button shotButton; // ates etme butonu
+    [SerializeField] GameObject shootPanel;
+    [SerializeField] GameObject spotPanel;
+    [SerializeField] Slider spotSlider; // spot butonunu dolduran bar
     const float time = 5f; // barin dolma sursi
     float timeCounter; // local zamani tutar
     bool timer;  // zaman sayacini baslatir durdurur
@@ -14,7 +15,6 @@ public class SpotTrigger : MonoBehaviour
 
     private void Start()
     {
-        shotButton.onClick.AddListener(ShotTouchPlay);
     }
 
     void FixedUpdate()
@@ -33,12 +33,12 @@ public class SpotTrigger : MonoBehaviour
             {
                 timeCounter += Time.deltaTime;
                 Debug.Log("time+: " + timeCounter);
-                SetShotSlider(timeCounter);
+                SetShpotSlider(timeCounter);
                 if (timeCounter >= time)
                 {
-                    shotSlider.gameObject.SetActive(false);
-                    shotButton.gameObject.SetActive(true);
-                    Debug.Log("win");
+                    spotPanel.gameObject.SetActive(false);
+                    shootPanel.gameObject.SetActive(true);
+                    //Debug.Log("win");
                 }
             }
         }
@@ -59,23 +59,19 @@ public class SpotTrigger : MonoBehaviour
         if (timer && timeCounter > 0 && timeCounter < time)
         {
             timeCounter -= Time.deltaTime;
-            SetShotSlider(timeCounter);
+            SetShpotSlider(timeCounter);
             Debug.Log("time-: " + timeCounter);
         }
     }
 
-    public void ShotSliderMax()
+    public void SpotSliderMax()
     {
-        shotSlider.maxValue = time;
+        spotSlider.maxValue = time;
     }
 
-    void SetShotSlider(float timeCounter)
+    void SetShpotSlider(float timeCounter)
     {
-        shotSlider.value = timeCounter;
+        spotSlider.value = timeCounter;
     }
 
-    void ShotTouchPlay()
-    {
-        Debug.Log("TA TA oldun cik");
-    }
 }

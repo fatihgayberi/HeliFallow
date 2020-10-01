@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d18f6ab8dc67fa648937dcf03a7dce7e, type: 2}
+  - {fileID: 2100000, guid: a51455e7ab8c08d47901b49e948eaae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d18f6ab8dc67fa648937dcf03a7dce7e, type: 2}
+  - {fileID: 2100000, guid: a51455e7ab8c08d47901b49e948eaae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,7 +221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d18f6ab8dc67fa648937dcf03a7dce7e, type: 2}
+  - {fileID: 2100000, guid: a51455e7ab8c08d47901b49e948eaae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -302,7 +302,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d18f6ab8dc67fa648937dcf03a7dce7e, type: 2}
+  - {fileID: 2100000, guid: a51455e7ab8c08d47901b49e948eaae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 8698215988287300563}
   m_Layer: 0
   m_Name: Thief
-  m_TagString: Untagged
+  m_TagString: Thief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,9 +351,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8392225405426327164}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 149.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children:
   - {fileID: 6794654181521854506}
   - {fileID: 3443180677993900662}
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7d2b9c506aa2c43a59fb948f19d33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
 --- !u!54 &8698215988287300562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -418,5 +418,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 191.8258, y: 176.9942, z: 453.88553}
-  m_Center: {x: 2.598053, y: 60, z: -23.057236}
+  m_Size: {x: 191.82582, y: 143.16577, z: 453.88553}
+  m_Center: {x: 2.5980535, y: 71.84932, z: -23.057247}

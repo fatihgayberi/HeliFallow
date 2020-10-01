@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class LineChange : MonoBehaviour
 {
-    bool changeRotate; // aracin donusunu baslatir ve sonlandirir
+    Rigidbody rbThief;
+    bool changeRotateDown; // aracin asagiya donusunu baslatir ve sonlandirir
+    bool changeRotateUp; // aracin yukariya donusunu baslatir ve sonlandirir
     bool changingLane; // serit degisimini haber verir
     bool upDirection; // aracin yukari mi asagi mi serit degisecegini tutar
     public float rotationAngle = 0.5f; // Quaternion.Slerp e uygun bir aci tutar
     Quaternion deltaRotation; // yapacagi virajin keskinligini saklar
-    Quaternion startRotation; // baslangic rotasyonlarını tutar
+    float startRotation; // baslangic rotasyonlarını tutar
     public float rotateStartTime; // donusun ne zaman baslayacagini saklar
     public float rotateJourneyTime; // donusun ne kadar uzun surcegini saklar
     public float rotateSpeed; // donus hizini tutar
     float targetPosZ; // gidilecek olan yolun Z pozisyonunu saklar
     float speedZ; // serit degistirme hizini saklar
 
-    private void FixedUpdate()
+    private void Start()
+    {
+        rbThief = GetComponent<Rigidbody>();    
+    }
+
+    private void Update()
     {
         Rotate();
     }
@@ -26,17 +33,34 @@ public class LineChange : MonoBehaviour
         positionController(other);
     }
 
-    // arcin seir degistirirkenki donme animasyonunu gercekler
+    // aracin seyir degistirirkenki donme animasyonunu gercekler
     void Rotate()
     {
-        if (changeRotate)
+        if (changeRotateDown)
         {
             float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
-            transform.rotation = Quaternion.Slerp(deltaRotation, startRotation, fracComplete * rotateSpeed);
-            if (transform.rotation == startRotation)
+            transform.rotation = Quaternion.Slerp(new Quaternion(0, startRotation, 0, transform.rotation.w), new Quaternion(0, rotationAngle, 0, transform.rotation.w), fracComplete * rotateSpeed);
+
+            if (transform.rotation.eulerAngles.y <= 93)
             {
-                changeRotate = false;
-                transform.rotation = Quaternion.Euler(0, 90f, 0);
+                changeRotateDown = false;
+                transform.rotation = new Quaternion(0, startRotation, 0, transform.rotation.w);
+                Debug.Log("After: " + transform.rotation);
+            }
+        }
+
+        if (changeRotateUp)
+        {
+            float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
+            transform.rotation = Quaternion.Slerp(new Quaternion(0, startRotation, 0, transform.rotation.w), new Quaternion(0, rotationAngle, 0, transform.rotation.w), fracComplete * rotateSpeed);
+            float emptyRotate = transform.rotation.eulerAngles.y;
+
+            Debug.Log("Empty: " + emptyRotate);
+            if (transform.rotation.eulerAngles.y >= 87)
+            {
+                changeRotateUp = false;
+                transform.rotation = new Quaternion(0, startRotation, 0, transform.rotation.w);
+                Debug.Log("After: " + transform.rotation);
             }
         }
     }
@@ -47,12 +71,12 @@ public class LineChange : MonoBehaviour
         // asagi yonde hareket edecek ise
         if (other.CompareTag("DownPath"))
         {
-            startRotation = transform.rotation;
+            startRotation = transform.rotation.y;
             speedZ = -3f;
-            rotationAngle = 120;
+            rotationAngle = 0.85f;
             targetPosZ = Mathf.Round(transform.position.z) - 5f;
-            deltaRotation = Quaternion.Euler(0, rotationAngle, 0);
-            changeRotate = true;
+            deltaRotation = Quaternion.Euler(new Vector3(0, rotationAngle, 0));
+            changeRotateDown = true;
             changingLane = true;
             upDirection = false;
         }
@@ -60,18 +84,18 @@ public class LineChange : MonoBehaviour
         // yukari yonde hareket edecek ise
         if (other.CompareTag("UpPath"))
         {
-            startRotation = transform.rotation;
+            startRotation = transform.rotation.y;
             speedZ = 3f;
-            rotationAngle = 60;
+            rotationAngle = 0.5f;
             targetPosZ = Mathf.Round(transform.position.z) + 5f;
-            deltaRotation = Quaternion.Euler(0, rotationAngle, 0);
-            changeRotate = true;
+            deltaRotation = Quaternion.Euler(new Vector3(0, rotationAngle, 0));
+            changeRotateUp = true;
             changingLane = true;
             upDirection = true;
         }
         else if (other.CompareTag("PathEnd"))
         {
-            other.GetComponent<ThiefMoved>().enabled = false;
+            GetComponent<ThiefMoved>().enabled = false;
         }
     }
 
