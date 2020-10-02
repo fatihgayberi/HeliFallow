@@ -497,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.41
+      value: 44.41
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -826,7 +826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498704231207248702, guid: 74d2f128b3b14a34d91da4af446ae7bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.75
+      value: 69.25
       objectReference: {fileID: 0}
     - target: {fileID: 5498704231207248702, guid: 74d2f128b3b14a34d91da4af446ae7bf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1421,6 +1421,14 @@ PrefabInstance:
       propertyPath: lerpRatio
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 8698215988287300560, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698215988287300561, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8698215988287300562, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_Constraints
       value: 116
@@ -1636,6 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   rotateSpeed: 0.5
 --- !u!1001 &1621445921
 PrefabInstance:
@@ -1844,7 +1853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1838453118
 Light:
   m_ObjectHideFlags: 0
@@ -2264,7 +2273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.25
+      value: 96.25
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2627,6 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   rotateSpeed: 0.5
 --- !u!65 &4013782165297470582
 BoxCollider:
@@ -3101,6 +3111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   rotateSpeed: 0.5
 --- !u!114 &8264768736921376525
 MonoBehaviour:

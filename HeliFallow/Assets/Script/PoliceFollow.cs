@@ -8,17 +8,6 @@ public class PoliceFollow : MonoBehaviour
     [SerializeField] GameObject downPath;
     public float followDistance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         Vector3 newPath = transform.position;
@@ -35,5 +24,4 @@ public class PoliceFollow : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
 }
