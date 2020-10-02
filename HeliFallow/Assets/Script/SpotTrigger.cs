@@ -8,7 +8,7 @@ public class SpotTrigger : MonoBehaviour
     [SerializeField] GameObject shootPanel;
     [SerializeField] GameObject spotPanel;
     [SerializeField] Slider spotSlider; // spot butonunu dolduran bar
-    const float time = 5f; // barin dolma sursi
+    const float spotMaxTime = 5f; // spot barin dolma sursi
     float timeCounter; // local zamani tutar
     bool timer;  // zaman sayacini baslatir durdurur
 
@@ -29,17 +29,16 @@ public class SpotTrigger : MonoBehaviour
         {
             timer = false;
 
-            if (timeCounter < time)
+            if (timeCounter < spotMaxTime)
             {
                 timeCounter += Time.deltaTime;
                 Debug.Log("time+: " + timeCounter);
                 SetShpotSlider(timeCounter);
 
-                if (timeCounter >= time)
+                if (timeCounter >= spotMaxTime)
                 {
                     spotPanel.gameObject.SetActive(false);
                     shootPanel.gameObject.SetActive(true);
-                    Time.timeScale = 0.01f;
                     //Debug.Log("win");
                 }
             }
@@ -58,7 +57,7 @@ public class SpotTrigger : MonoBehaviour
     // saniye sayacini azaltir
     void TimeController()
     {
-        if (timer && timeCounter > 0 && timeCounter < time)
+        if (timer && timeCounter > 0 && timeCounter < spotMaxTime)
         {
             timeCounter -= Time.deltaTime;
             SetShpotSlider(timeCounter);
@@ -68,7 +67,7 @@ public class SpotTrigger : MonoBehaviour
 
     public void SpotSliderMax()
     {
-        spotSlider.maxValue = time;
+        spotSlider.maxValue = spotMaxTime;
     }
 
     void SetShpotSlider(float timeCounter)

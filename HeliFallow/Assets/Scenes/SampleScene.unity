@@ -497,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.75
+      value: 12.41
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1391,7 +1391,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6116ce03c3b914f4eb6e6cc3de6cef1b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1636,11 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 0.5
-  rotateStartTime: 1
-  rotateJourneyTime: 1
   rotateSpeed: 0.5
-  lerpRatio: 0
 --- !u!1001 &1621445921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.25
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1848,7 +1844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1838453118
 Light:
   m_ObjectHideFlags: 0
@@ -2631,11 +2627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 0.5
-  rotateStartTime: 1
-  rotateJourneyTime: 1
   rotateSpeed: 0.5
-  lerpRatio: 0
 --- !u!65 &4013782165297470582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3109,11 +3101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 0.5
-  rotateStartTime: 1
-  rotateJourneyTime: 1
   rotateSpeed: 0.5
-  lerpRatio: 0
 --- !u!114 &8264768736921376525
 MonoBehaviour:
   m_ObjectHideFlags: 0

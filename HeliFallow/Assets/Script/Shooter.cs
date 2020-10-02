@@ -7,7 +7,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] Slider shootSlider;
     [SerializeField] Button shootBtn;
-    const float maxBarCross = 3;
+    const float maxBarCross = 2.5f;
     float barCross;
     bool barCrossDecrease;
     bool barStopper;
