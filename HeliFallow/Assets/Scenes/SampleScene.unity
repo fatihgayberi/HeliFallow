@@ -1373,6 +1373,30 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1363119706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8392225405426327164, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+  m_PrefabInstance: {fileID: 1452743357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1363119711
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363119706}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6116ce03c3b914f4eb6e6cc3de6cef1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1391495950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9168480182896526534, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
@@ -1391,7 +1415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8698215988287300560, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: rotateSpeed
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698215988287300560, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: lerpRatio
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8698215988287300562, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_Constraints
@@ -1612,6 +1640,7 @@ MonoBehaviour:
   rotateStartTime: 1
   rotateJourneyTime: 1
   rotateSpeed: 0.5
+  lerpRatio: 0
 --- !u!1001 &1621445921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1690,7 +1719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.5
+      value: 15.25
       objectReference: {fileID: 0}
     - target: {fileID: 2613264825745700584, guid: e6d44a5d005b09c40ac5a0a9102ea2a1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2606,6 +2635,7 @@ MonoBehaviour:
   rotateStartTime: 1
   rotateJourneyTime: 1
   rotateSpeed: 0.5
+  lerpRatio: 0
 --- !u!65 &4013782165297470582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3083,6 +3113,7 @@ MonoBehaviour:
   rotateStartTime: 1
   rotateJourneyTime: 1
   rotateSpeed: 0.5
+  lerpRatio: 0
 --- !u!114 &8264768736921376525
 MonoBehaviour:
   m_ObjectHideFlags: 0

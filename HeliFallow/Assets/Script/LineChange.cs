@@ -11,19 +11,24 @@ public class LineChange : MonoBehaviour
     bool upDirection; // aracin yukari mi asagi mi serit degisecegini tutar
     public float rotationAngle = 0.5f; // Quaternion.Slerp e uygun bir aci tutar
     Quaternion deltaRotation; // yapacagi virajin keskinligini saklar
-    float startRotation; // baslangic rotasyonlarını tutar
+    Quaternion startRotation = new Quaternion(); // baslangic rotasyonlarını tutar
     public float rotateStartTime; // donusun ne zaman baslayacagini saklar
     public float rotateJourneyTime; // donusun ne kadar uzun surcegini saklar
     public float rotateSpeed; // donus hizini tutar
     float targetPosZ; // gidilecek olan yolun Z pozisyonunu saklar
     float speedZ; // serit degistirme hizini saklar
+    bool rotate;
+    float lerpValue;
+    public float lerpRatio;
+
 
     private void Start()
     {
+        startRotation = gameObject.transform.rotation;
         rbThief = GetComponent<Rigidbody>();    
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Rotate();
     }
@@ -36,33 +41,43 @@ public class LineChange : MonoBehaviour
     // aracin seyir degistirirkenki donme animasyonunu gercekler
     void Rotate()
     {
-        if (changeRotateDown)
+        if (rotate)
         {
-            float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
-            transform.rotation = Quaternion.Slerp(new Quaternion(0, startRotation, 0, transform.rotation.w), new Quaternion(0, rotationAngle, 0, transform.rotation.w), fracComplete * rotateSpeed);
-
-            if (transform.rotation.eulerAngles.y <= 93)
+            if (changeRotateDown)
             {
-                changeRotateDown = false;
-                transform.rotation = new Quaternion(0, startRotation, 0, transform.rotation.w);
-                Debug.Log("After: " + transform.rotation);
+                Debug.Log("asdf");
+                //lerpValue = Time.deltaTime / lerpRatio;
+                //Debug.Log(":::" + transform.rotation.eulerAngles.y);
+                float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
+                transform.rotation = Quaternion.Slerp(startRotation, deltaRotation, fracComplete);
+                if (transform.rotation.eulerAngles.y <= 93)
+                {
+                    changeRotateDown = false;
+                    transform.rotation = startRotation;//new Quaternion(0, startRotation, 0, transform.rotation.w);
+                    Debug.Log("After: " + transform.rotation.eulerAngles.y);
+                }
             }
         }
-
         if (changeRotateUp)
         {
+            Debug.Log("asdf");
+            //lerpValue = Time.deltaTime / lerpRatio;
+            //Debug.Log(":::" + transform.rotation.eulerAngles.y);
             float fracComplete = Mathf.PingPong(Time.unscaledTime - rotateStartTime, rotateJourneyTime / rotateSpeed);
-            transform.rotation = Quaternion.Slerp(new Quaternion(0, startRotation, 0, transform.rotation.w), new Quaternion(0, rotationAngle, 0, transform.rotation.w), fracComplete * rotateSpeed);
-            float emptyRotate = transform.rotation.eulerAngles.y;
-
-            Debug.Log("Empty: " + emptyRotate);
+            transform.rotation = Quaternion.Slerp(startRotation, deltaRotation, fracComplete);
             if (transform.rotation.eulerAngles.y >= 87)
             {
                 changeRotateUp = false;
-                transform.rotation = new Quaternion(0, startRotation, 0, transform.rotation.w);
-                Debug.Log("After: " + transform.rotation);
+                transform.rotation = startRotation;//new Quaternion(0, startRotation, 0, transform.rotation.w);
+                Debug.Log("After: " + transform.rotation.eulerAngles.y);
             }
+
         }
+    }
+
+    void RotateBack()
+    {
+
     }
 
     // aracin ne sekilde animasyon yapacagını belirler
@@ -71,11 +86,15 @@ public class LineChange : MonoBehaviour
         // asagi yonde hareket edecek ise
         if (other.CompareTag("DownPath"))
         {
-            startRotation = transform.rotation.y;
+            Debug.Log("num1");
+            rotate = true;
+            //startRotation = transform.rotation.y;
             speedZ = -3f;
-            rotationAngle = 0.85f;
+            rotationAngle = 120f;
             targetPosZ = Mathf.Round(transform.position.z) - 5f;
             deltaRotation = Quaternion.Euler(new Vector3(0, rotationAngle, 0));
+            Debug.Log(deltaRotation);
+            Debug.Log(deltaRotation.eulerAngles);
             changeRotateDown = true;
             changingLane = true;
             upDirection = false;
@@ -84,9 +103,11 @@ public class LineChange : MonoBehaviour
         // yukari yonde hareket edecek ise
         if (other.CompareTag("UpPath"))
         {
-            startRotation = transform.rotation.y;
+            Debug.Log("num2");
+            rotate = true;
+            //startRotation = transform.rotation.y;
             speedZ = 3f;
-            rotationAngle = 0.5f;
+            rotationAngle = 60f;
             targetPosZ = Mathf.Round(transform.position.z) + 5f;
             deltaRotation = Quaternion.Euler(new Vector3(0, rotationAngle, 0));
             changeRotateUp = true;

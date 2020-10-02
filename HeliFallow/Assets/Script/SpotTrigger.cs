@@ -34,10 +34,12 @@ public class SpotTrigger : MonoBehaviour
                 timeCounter += Time.deltaTime;
                 Debug.Log("time+: " + timeCounter);
                 SetShpotSlider(timeCounter);
+
                 if (timeCounter >= time)
                 {
                     spotPanel.gameObject.SetActive(false);
                     shootPanel.gameObject.SetActive(true);
+                    Time.timeScale = 0.01f;
                     //Debug.Log("win");
                 }
             }
