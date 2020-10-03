@@ -334,9 +334,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9168480182896526534}
   - component: {fileID: 8698215988287300560}
-  - component: {fileID: 8698215988287300561}
   - component: {fileID: 8698215988287300562}
   - component: {fileID: 8698215988287300563}
+  - component: {fileID: 3590307095983779080}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Thief
@@ -374,23 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d15808aeab29e47ae2f4463d0b0355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 0.5
-  rotateStartTime: 1
-  rotateJourneyTime: 1
-  rotateSpeed: 1
---- !u!114 &8698215988287300561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8392225405426327164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c7d2b9c506aa2c43a59fb948f19d33a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   speed: 3
+  rotateSpeed: 1
 --- !u!54 &8698215988287300562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -420,3 +405,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 191.82582, y: 143.16577, z: 453.88553}
   m_Center: {x: 2.5980535, y: 71.84932, z: -23.057247}
+--- !u!95 &3590307095983779080
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8392225405426327164}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6116ce03c3b914f4eb6e6cc3de6cef1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

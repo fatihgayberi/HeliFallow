@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class SpotTrigger : MonoBehaviour
 {
+    CameraFolow cameraFolow;
     [SerializeField] GameObject shootPanel;
+    [SerializeField] GameObject bullet;
     [SerializeField] GameObject spotPanel;
     [SerializeField] Slider spotSlider; // spot butonunu dolduran bar
     const float spotMaxTime = 5f; // spot barin dolma sursi
@@ -15,6 +17,7 @@ public class SpotTrigger : MonoBehaviour
 
     private void Start()
     {
+        cameraFolow = FindObjectOfType<CameraFolow>();
     }
 
     void FixedUpdate()
@@ -38,8 +41,9 @@ public class SpotTrigger : MonoBehaviour
                 if (timeCounter >= spotMaxTime)
                 {
                     spotPanel.gameObject.SetActive(false);
-                    shootPanel.gameObject.SetActive(true);
-                    //Debug.Log("win");
+                    // shootPanel.gameObject.SetActive(true);
+                    bullet.gameObject.SetActive(true);
+                    // Debug.Log("win");
                 }
             }
         }
@@ -74,5 +78,4 @@ public class SpotTrigger : MonoBehaviour
     {
         spotSlider.value = timeCounter;
     }
-
 }

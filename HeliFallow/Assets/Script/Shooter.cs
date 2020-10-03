@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Shooter : MonoBehaviour
 {
+    CameraFolow cameraFolow;
     [SerializeField] Slider shootSlider;
     [SerializeField] Button shootBtn;
     const float maxBarCross = 2.5f;
     float barCross;
     bool barCrossDecrease;
     bool barStopper;
+    public float smoothLerp;
 
     // Start is called before the first frame update
     void Start()
@@ -111,4 +113,13 @@ public class Shooter : MonoBehaviour
             Debug.Log("LOSER");
         }
     }
+
+    //void CameraLerp()
+    //{
+    //    Vector3 newPosition;
+    //    newPosition = new Vector3(GetComponent<Camera>().transform.position.x + 10);
+    //
+    //    GetComponent<Camera>().transform.position = Vector3.Lerp(GetComponent<Camera>().transform.position, newPosition, Time.deltaTime * smoothLerp);
+    //
+    //}
 }

@@ -102,7 +102,7 @@ public class LineChange : MonoBehaviour
     {
         anim.SetBool(animationName, true);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1);
 
         anim.SetBool(animationName, false);
     }

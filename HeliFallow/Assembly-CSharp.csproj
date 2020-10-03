@@ -62,6 +62,7 @@
     <Compile Include="Assets\Script\SpotTrigger.cs" />
     <Compile Include="Assets\Script\LineChange.cs" />
     <Compile Include="Assets\Script\ThiefMoved.cs" />
+    <Compile Include="Assets\Script\Bullet.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\CarPackage\JMO Assets\Toony Colors Pro\Shaders 2.0\Variants Base\TCP2_Mobile_Specular.shader" />
