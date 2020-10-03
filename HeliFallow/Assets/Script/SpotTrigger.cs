@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpotTrigger : MonoBehaviour
 {
-    CameraFolow cameraFolow;
+    [SerializeField] GameObject camera;
     [SerializeField] GameObject shootPanel;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject spotPanel;
@@ -13,12 +13,6 @@ public class SpotTrigger : MonoBehaviour
     const float spotMaxTime = 5f; // spot barin dolma sursi
     float timeCounter; // local zamani tutar
     bool timer;  // zaman sayacini baslatir durdurur
-
-
-    private void Start()
-    {
-        cameraFolow = FindObjectOfType<CameraFolow>();
-    }
 
     void FixedUpdate()
     {
@@ -41,6 +35,7 @@ public class SpotTrigger : MonoBehaviour
                 if (timeCounter >= spotMaxTime)
                 {
                     spotPanel.gameObject.SetActive(false);
+                    camera.GetComponent<CameraFolow>().enabled = false;
                     // shootPanel.gameObject.SetActive(true);
                     bullet.gameObject.SetActive(true);
                     // Debug.Log("win");

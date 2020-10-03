@@ -92,9 +92,10 @@ public class LineChange : MonoBehaviour
             speedZ = 3f;
             targetPosZ = Mathf.Round(transform.position.z) + 5f;
         }
-        else if (other.CompareTag("PathEnd"))
+        if (other.CompareTag("PathEnd"))
         {
-            GetComponent<LineChange>().enabled = false;
+            rbThief.velocity = Vector3.zero;
+            this.GetComponent<LineChange>().enabled = false;
         }
     }
 
@@ -105,30 +106,5 @@ public class LineChange : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         anim.SetBool(animationName, false);
-    }
-
-    public bool GetChangingLane()
-    {
-        return changingLane;
-    }
-
-    public void SetChangingLane(bool changingLane)
-    {
-        this.changingLane = changingLane;
-    }
-
-    public bool GetUpDirection() 
-    {
-        return upDirection;
-    }
-
-    public float GetTargetPosZ()
-    {
-        return targetPosZ;
-    }
-
-    public float GetSpeedZ()
-    {
-        return speedZ;
     }
 }

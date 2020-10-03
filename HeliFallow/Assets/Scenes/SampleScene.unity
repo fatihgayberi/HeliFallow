@@ -288,12 +288,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309305755}
-  m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268343}
-  m_LocalPosition: {x: -10, y: 20, z: 0}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
 --- !u!114 &309305760
 MonoBehaviour:
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1363119706}
-  lerpSpeed: 9
-  slowMotion: 0.05
+  lerpSpeed: 45
+  slowMotion: 0.01
 --- !u!1 &373433121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1063,8 @@ Transform:
   m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.27059805, w: 0.6532815}
   m_LocalPosition: {x: -10, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 309305759}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 90, z: 0}
@@ -1502,6 +1503,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3590307095983779080, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8392225405426327164, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_Name
       value: Thief
@@ -1522,6 +1527,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 84
       objectReference: {fileID: 0}
+    - target: {fileID: 8698215988287300563, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9168480182896526534, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1532,7 +1541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9168480182896526534, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9168480182896526534, guid: 97ca415970c0871488e7c5e70166df1a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1964,6 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e54a216e8b304b4d999319ec6ac0ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 963194225}
   shootPanel: {fileID: 373433121}
   bullet: {fileID: 309305755}
   spotPanel: {fileID: 1958901598}

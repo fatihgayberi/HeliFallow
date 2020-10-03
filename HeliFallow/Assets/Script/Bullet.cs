@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] GameObject target;
     public float lerpSpeed;
     public float slowMotion;
+    bool shoot = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,11 @@ public class Bullet : MonoBehaviour
 
     void BulletShoot()
     {
-        transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * lerpSpeed);
+        if (gameObject != null)
+        {
+            transform.parent.position = Vector3.Lerp(transform.parent.position, transform.position, Time.deltaTime * lerpSpeed);
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * lerpSpeed);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +36,8 @@ public class Bullet : MonoBehaviour
         {
             Destroy(other.gameObject);
             Debug.Log("BOOOM");
+            shoot = false;
+            Destroy(gameObject);
         }
     }
 }
