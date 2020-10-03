@@ -8,9 +8,9 @@ public class LineChange : MonoBehaviour
     [SerializeField] float speed; // aracin dikey yonde ilerlemesi icin hizi
     [SerializeField] float rotateSpeed; // donus hizini tutar
     bool changingLane; // serit degisimini haber verir
-    bool upDirection; // aracin yukari mi asagi mi serit degisecegini tutar
-    float targetPosZ; // gidilecek olan yolun Z pozisyonunu saklar
-    float speedZ; // serit degistirme hizini saklar
+    bool leftDirection; // aracin yukari mi asagi mi serit degisecegini tutar
+    float targetPosX; // gidilecek olan yolun Z pozisyonunu saklar
+    float speedX; // serit degistirme hizini saklar
     Animator anim;
 
     private void Start()
@@ -30,35 +30,35 @@ public class LineChange : MonoBehaviour
         // duz bir hizada ilerlemesini saglar
         if (!changingLane)
         {
-            rbThief.velocity = new Vector3(speed, 0, 0);
+            rbThief.velocity = new Vector3(0, 0, speed);
         }
         // serit degistirirken capraz ilerlemesini saglar
         if (changingLane)
         {
-            rbThief.velocity = new Vector3(speed, 0, speedZ);
+            rbThief.velocity = new Vector3(speedX, 0, speed);
     
-            // en alt seride gecmesini kontrol eder
-            if (targetPosZ < 0 && transform.position.z <= targetPosZ)
+            // orta seritten sag seride gecmesini kontrol eder
+            if (targetPosX > 0 && transform.position.x >= targetPosX)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, (int)targetPosZ);
+                transform.position = new Vector3((int)targetPosX, transform.position.y, transform.position.z);
                 changingLane = false;
             }
-            // en ust seride gecmesini kontrol eder
-            if (targetPosZ > 0 && transform.position.z >= targetPosZ)
+            // sol seride gecmesini kontrol eder
+            if (targetPosX < 0 && transform.position.x <= targetPosX)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, (int)targetPosZ);
+                transform.position = new Vector3((int)targetPosX, transform.position.y, transform.position.z);
                 changingLane = false;
             }
-            // orta seritten en ust seride gecmesini kontrol eder
-            if (targetPosZ == 0 && upDirection && transform.position.z >= targetPosZ)
+            // sag seritten orta serite gecmesini kontrol eder
+            if (targetPosX == 0 && leftDirection && transform.position.x <= targetPosX)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, (int)targetPosZ);
+                transform.position = new Vector3((int)targetPosX, transform.position.y, transform.position.z);
                 changingLane = false;
             }
-            // orta seritten en alt seride gecmesini kontrol eder
-            else if (targetPosZ == 0 && !upDirection && transform.position.z <= targetPosZ)
+            // sag seritten orta seride gecmesini kontrol eder
+            else if (targetPosX == 0 && !leftDirection && transform.position.x >= targetPosX)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, (int)targetPosZ);
+                transform.position = new Vector3((int)targetPosX, transform.position.y, transform.position.z);
                 changingLane = false;
             }
         }
@@ -74,23 +74,23 @@ public class LineChange : MonoBehaviour
     void positionController(Collider other)
     {
         // asagi yonde hareket edecek ise
-        if (other.CompareTag("DownPath"))
+        if (other.CompareTag("RightPath"))
         {
             StartCoroutine(AnimatorSetFire("Right"));
             changingLane = true;
-            upDirection = false;
-            speedZ = -3f;
-            targetPosZ = Mathf.Round(transform.position.z) - 5f;
+            leftDirection = false;
+            speedX = 3f;
+            targetPosX = Mathf.Round(transform.position.x) + 5f;
         }
 
         // yukari yonde hareket edecek ise
-        if (other.CompareTag("UpPath"))
+        if (other.CompareTag("LeftPath"))
         {
             StartCoroutine(AnimatorSetFire("Left"));
             changingLane = true;
-            upDirection = true;
-            speedZ = 3f;
-            targetPosZ = Mathf.Round(transform.position.z) + 5f;
+            leftDirection = true;
+            speedX = -3f;
+            targetPosX = Mathf.Round(transform.position.x) - 5f;
         }
         if (other.CompareTag("PathEnd"))
         {

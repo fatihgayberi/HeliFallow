@@ -36,9 +36,7 @@ public class SpotTrigger : MonoBehaviour
                 {
                     spotPanel.gameObject.SetActive(false);
                     camera.GetComponent<CameraFolow>().enabled = false;
-                    // shootPanel.gameObject.SetActive(true);
                     bullet.gameObject.SetActive(true);
-                    // Debug.Log("win");
                 }
             }
         }
