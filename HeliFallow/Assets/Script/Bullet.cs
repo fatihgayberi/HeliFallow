@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Time.timeScale = slowMotion;
+        target.GetComponent<LineChange>().enabled = false;
     }
 
     // Update is called once per frame
